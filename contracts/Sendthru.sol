@@ -5,7 +5,7 @@ contract SendToDepositAddress {
 
 		function () external payable {
       if (msg.value > 0) {
-          myAddress.transfer(msg.value);
+          myAddress.call.value(address(this).balance).gas(gasleft())("");
       }
 	 }
 }
